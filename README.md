@@ -22,7 +22,7 @@
 | -------------------------- | ----------------------------------------- | ---------------------- |
 | `/`                        | Página principal con listado de productos | No                     |
 | `/login`                   | Página de inicio de sesión                | No                     |
-| `/signup`                  | Página de registro de usuario             | No                     |
+| `/register`                | Página de registro de usuario             | No                     |
 | `/product/:id`             | Detalle de un producto específico         | No                     |
 | `/cart`                    | Página del carrito de compras             | Sí                     |
 | `/checkout`                | Página de confirmación de compra          | Sí                     |
