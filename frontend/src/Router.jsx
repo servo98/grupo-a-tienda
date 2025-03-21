@@ -10,24 +10,28 @@ import Orders from "./pages/Orders";
 import AdminProducts from "./pages/AdminProducts";
 import EditProduct from "./pages/EditProduct";
 
+import CustomLayout from "./layouts/CustomLayout";
+
 export const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/products/:productId" element={<Product />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/orders" element={<Orders />} />
+      <Route path="/" element={<CustomLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/products/:productId" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<Orders />} />
 
-      <Route path="/admin/products" element={<AdminProducts />} />
-      <Route
-        path="/admin/products/:idProduct/edit?"
-        element={<EditProduct />}
-      />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route
+          path="/admin/products/:idProduct/edit?"
+          element={<EditProduct />}
+        />
 
-      <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Route>
     </Routes>
   );
 };
