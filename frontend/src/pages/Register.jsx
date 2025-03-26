@@ -3,6 +3,8 @@ import { useState } from "react";
 import { register } from "../services/auth.service";
 
 const Register = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -25,6 +27,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
+      setIsLoading(true);
       const response = await register(
         formData.firstName,
         formData.lastName,
@@ -34,6 +37,8 @@ const Register = () => {
       console.log(response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,7 +90,7 @@ const Register = () => {
             placeholder="Ingresa contraseña"
           />
         </div>
-        <button onClick={handleSubmit} type="submit">
+        <button onClick={handleSubmit} type="submit" disabled={isLoading}>
           Register
         </button>
       </form>
