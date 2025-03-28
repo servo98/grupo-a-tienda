@@ -2,7 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { register } from "../services/auth.service";
 
+import { useNavigate } from "react-router";
+
 const Register = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -35,6 +38,7 @@ const Register = () => {
         formData.password
       );
       console.log(response);
+      navigate("/login");
     } catch (error) {
       console.log(error);
     } finally {

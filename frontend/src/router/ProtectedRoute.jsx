@@ -1,7 +1,10 @@
 import { Outlet, Navigate } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const ProtectedRoute = () => {
-  const isAuth = false;
+  const { isAuth } = useAuth();
+
+  console.log("Is auth en la ruta protegida es", isAuth);
 
   return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };

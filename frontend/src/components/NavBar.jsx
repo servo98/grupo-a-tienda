@@ -1,16 +1,44 @@
 import { Link } from "react-router";
-
+import useAuth from "../../hooks/useAuth";
 const NavBar = () => {
+  const { isAuth, logoutProvider } = useAuth();
+
+  const handleLogout = () => {
+    logoutProvider();
+  };
+
   return (
     <div>
-      <ul>
-        <li>
-          <Link to="/register">Registrarse</Link>
-        </li>
-        <li>
-          <Link to="/login">Iniciar sesión</Link>
-        </li>
-      </ul>
+      {isAuth ? (
+        <ul>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            <Link to="/cart">Carrito</Link>
+          </li>
+          <li>
+            <Link to="/orders">Historial de compras</Link>
+          </li>
+          <li>
+            <Link to="/admin/products">Mis productos</Link>
+          </li>
+          <li>
+            <button onClick={handleLogout}>
+              <b>Cerrar Sesión</b>
+            </button>
+          </li>
+        </ul>
+      ) : (
+        <ul>
+          <li>
+            <Link to="/register">Registrarse</Link>
+          </li>
+          <li>
+            <Link to="/login">Iniciar sesión</Link>
+          </li>
+        </ul>
+      )}
     </div>
   );
 };
