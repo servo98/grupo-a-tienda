@@ -23,7 +23,7 @@ morgan.token("body", (req) => {
   return JSON.stringify(req.body);
 });
 
-api.use(morgan(":body"));
+// api.use(morgan(":body"));
 
 api.use(express.json());
 

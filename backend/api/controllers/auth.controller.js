@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { jwtSecret } from "../config.js";
 
 const register = async (req, res) => {
   try {
@@ -56,7 +57,7 @@ const login = async (req, res) => {
       userId: user._id,
     };
 
-    const token = jwt.sign(payload, "llavesecreta", {
+    const token = jwt.sign(payload, jwtSecret, {
       expiresIn: "10m",
     });
 

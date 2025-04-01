@@ -8,6 +8,7 @@ import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import Orders from "../pages/Orders";
 import AdminProducts from "../pages/AdminProducts";
+import CreateProduct from "../pages/CreateProduct";
 import EditProduct from "../pages/EditProduct";
 
 import CustomLayout from "../layouts/CustomLayout";
@@ -26,7 +27,7 @@ export const Router = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orders" element={<Orders />} />
-
+          <Route path="/admin/products/add" element={<CreateProduct />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route
             path="/admin/products/:idProduct/edit?"
