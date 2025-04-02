@@ -1,12 +1,15 @@
+import cors from "cors";
 import express from "express";
+import { rateLimit } from "express-rate-limit";
 import morgan from "morgan";
+import "./database.js";
+import adminProductRouter from "./routes/admin.product.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import cartRouter from "./routes/cart.routes.js";
 import orderRouter from "./routes/order.routes.js";
 import productRouter from "./routes/product.routes.js";
-import "./database.js";
-import cors from "cors";
-import { rateLimit } from "express-rate-limit";
+
+import authenticated from "./middlewares/authenticated.js";
 
 const api = express();
 
@@ -35,8 +38,9 @@ api.get("/", (req, res) => {
 
 // TODO: Registrar todas las rutas
 api.use("/api/auth", authRouter);
-api.use("/api/carts", cartRouter);
-api.use("/api/orders", orderRouter);
+api.use("/api/carts", authenticated, cartRouter);
+api.use("/api/orders", authenticated, orderRouter);
 api.use("/api/products", productRouter);
+api.use("/api/admin/products", authenticated, adminProductRouter);
 
 export default api;

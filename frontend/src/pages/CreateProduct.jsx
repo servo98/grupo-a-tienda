@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createProduct } from "../services/product.service";
+import { createProduct } from "../services/admin.product.service";
 import { useNavigate } from "react-router";
 
 const CreateProduct = () => {

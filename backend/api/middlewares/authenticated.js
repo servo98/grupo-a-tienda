@@ -18,7 +18,6 @@ const authenticated = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, jwtSecret);
-    console.log(payload);
 
     const { userId } = payload;
 
@@ -26,7 +25,6 @@ const authenticated = (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error(error);
     return res.status(401).json({
       message: "Invalid token",
     });

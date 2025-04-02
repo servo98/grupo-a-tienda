@@ -1,18 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AuthContext from "./AuthContext";
-import { setAuthToken } from "../services/api";
 
 const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(!!localStorage.getItem("token"));
-
-  useEffect(() => {
-    if (isAuth) {
-      const token = localStorage.getItem("token");
-      setAuthToken(token);
-    } else {
-      setAuthToken(null);
-    }
-  }, [isAuth]);
 
   const loginProvider = (token) => {
     localStorage.setItem("token", token);

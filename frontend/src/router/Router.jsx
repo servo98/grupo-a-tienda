@@ -30,7 +30,7 @@ export const Router = () => {
           <Route path="/admin/products/add" element={<CreateProduct />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route
-            path="/admin/products/:idProduct/edit?"
+            path="/admin/products/:productId/edit?"
             element={<EditProduct />}
           />
         </Route>
