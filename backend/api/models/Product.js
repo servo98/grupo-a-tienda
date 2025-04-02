@@ -19,6 +19,11 @@ const productSchema = new Schema({
       required: true,
     },
   ],
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 export default model("Product", productSchema);

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { createProduct } from "../services/product.service";
+import { useNavigate } from "react-router";
 
 const CreateProduct = () => {
+  const navigate = useNavigate();
   const [formData, setformData] = useState({
     name: "",
     description: "",
@@ -39,9 +41,9 @@ const CreateProduct = () => {
     formData.images.forEach((file) => tmpFormData.append("photos", file));
 
     try {
-      const { data } = await createProduct(tmpFormData);
+      await createProduct(tmpFormData);
 
-      console.log(data.product);
+      navigate("/admin/products");
     } catch (error) {
       console.error(error);
     }

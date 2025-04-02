@@ -14,30 +14,23 @@ const getAllProducts = async (req, res) => {
 };
 
 const getProductById = async (req, res) => {};
+
 const createProduct = async (req, res) => {
   try {
-    const { description, name, photos, price } = req.body;
+    const { description, name, price } = req.body;
 
-    console.log("hola");
-
-    console.log(req.files);
+    const { userId } = req;
 
     const urls = req.files.map((file) => {
       return file.path;
     });
 
-    // console.log(description, name, photos, price);
-
-    return res.json({
-      product: "llegó",
-      urls,
-    });
-
     const product = await Product.create({
       description,
       name,
-      photos,
+      photos: urls,
       price,
+      createdBy: userId,
     });
 
     return res.json({

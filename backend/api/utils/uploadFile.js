@@ -10,12 +10,16 @@ cloudinary.config({
   api_secret: cloudinaryCredentials.apiSecret,
 });
 
+const getFileName = () => {
+  return `product_${Date.now()}`;
+};
+
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: "productPhotos",
     formate: () => "png",
-    public_id: (req, file) => file.originalname.split(".")[0],
+    public_id: (req, file) => getFileName(),
   },
 });
 
