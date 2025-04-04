@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import AddToCart from "./AddToCart";
 const ProductList = ({ products, canEdit = false }) => {
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const ProductList = ({ products, canEdit = false }) => {
           >
             Detalles
           </button>
-          {canEdit && (
+          {canEdit ? (
             <button
               onClick={() => {
                 handleEdit(product._id);
@@ -33,6 +34,8 @@ const ProductList = ({ products, canEdit = false }) => {
             >
               Editar
             </button>
+          ) : (
+            <AddToCart productId={product._id} />
           )}
         </div>
       ))}

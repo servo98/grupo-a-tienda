@@ -38,7 +38,7 @@ api.get("/", (req, res) => {
 
 // TODO: Registrar todas las rutas
 api.use("/api/auth", authRouter);
-api.use("/api/carts", authenticated, cartRouter);
+api.use("/api/cart", authenticated, cartRouter);
 api.use("/api/orders", authenticated, orderRouter);
 api.use("/api/products", productRouter);
 api.use("/api/admin/products", authenticated, adminProductRouter);
