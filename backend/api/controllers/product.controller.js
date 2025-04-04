@@ -2,11 +2,26 @@ import Product from "../models/Product.js";
 
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find(
+      {},
+      {
+        photos: { $slice: 1 },
+      }
+    ).select("-__v -createdBy -description");
+
+    const responseProducts = products.map((product) => {
+      return {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        photo: product.photos[0],
+      };
+    });
     return res.json({
-      products,
+      products: responseProducts,
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Error al obtener productos",
     });
@@ -17,7 +32,10 @@ const getProductById = async (req, res) => {
   try {
     const { productId } = req.params;
 
-    const product = await Product.findById(productId);
+    const product = await Product.findById(productId).populate(
+      "createdBy",
+      "-password -__v -email -_id -id"
+    );
 
     if (!product) {
       return res.status(404).json({
@@ -103,11 +121,25 @@ const updateProductById = async (req, res) => {
 const getAdminProducts = async (req, res) => {
   const { userId } = req;
   try {
-    const products = await Product.find({
-      createdBy: userId,
+    const products = await Product.find(
+      {
+        createdBy: userId,
+      },
+      {
+        photos: { $slice: 1 },
+      }
+    );
+
+    const responseProducts = products.map((product) => {
+      return {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        photo: product.photos[0],
+      };
     });
     return res.json({
-      products,
+      products: responseProducts,
     });
   } catch (error) {
     console.error(error);

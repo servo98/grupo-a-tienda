@@ -16,7 +16,7 @@ const api = express();
 api.use(
   rateLimit({
     windowMs: 10 * 1000,
-    limit: 10,
+    limit: 30,
   })
 );
 

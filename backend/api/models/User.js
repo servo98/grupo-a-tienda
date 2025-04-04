@@ -20,4 +20,11 @@ const userSchema = new Schema({
   },
 });
 
+userSchema.virtual("fullName").get(function () {
+  return `${this.firstName} ${this.lastName}`;
+});
+
+userSchema.set("toJSON", { virtuals: true });
+userSchema.set("toObject", { virtuals: true });
+
 export default model("User", userSchema);

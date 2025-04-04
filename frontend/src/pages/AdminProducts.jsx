@@ -24,7 +24,7 @@ const AdminProducts = () => {
     <div>
       <h1>Mis productos</h1>
       <Link to="/admin/products/add">Agregar producto</Link>
-      <ProductList products={products} />
+      <ProductList products={products} canEdit />
     </div>
   );
 };

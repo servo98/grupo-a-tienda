@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Cart from "../models/Cart.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { jwtSecret } from "../config.js";
@@ -13,7 +14,13 @@ const register = async (req, res) => {
       email: req.body.email,
       password: encyptedPassword,
     });
-    res.json({ message: "User registered", user });
+
+    await Cart.create({
+      user: user._id,
+      items: [],
+    });
+
+    return res.json({ message: "User registered", user });
   } catch (error) {
     if (error.code === 11000) {
       return res.status(400).json({

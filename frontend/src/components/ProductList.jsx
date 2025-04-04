@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router";
-const ProductList = ({ products }) => {
+const ProductList = ({ products, canEdit = false }) => {
   const navigate = useNavigate();
 
   const handleEdit = (productId) => {
     navigate(`/admin/products/${productId}/edit`);
+  };
+
+  const handleDetails = (productId) => {
+    navigate(`/products/${productId}`);
   };
 
   return (
@@ -13,14 +17,23 @@ const ProductList = ({ products }) => {
           <p>{product.name}</p>
           <p>{product.description}</p>
           <p>${product.price}</p>
-          <img src={product.photos[0]} alt={product.name} width={70} />
+          <img src={product.photo} alt={product.name} width={70} />
           <button
             onClick={() => {
-              handleEdit(product._id);
+              handleDetails(product._id);
             }}
           >
-            Editar
+            Detalles
           </button>
+          {canEdit && (
+            <button
+              onClick={() => {
+                handleEdit(product._id);
+              }}
+            >
+              Editar
+            </button>
+          )}
         </div>
       ))}
     </div>

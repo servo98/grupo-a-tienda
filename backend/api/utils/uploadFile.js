@@ -11,6 +11,7 @@ cloudinary.config({
 });
 
 const getFileName = () => {
+  // TODO : Use a better way to generate unique file names
   return `product_${Date.now()}`;
 };
 
