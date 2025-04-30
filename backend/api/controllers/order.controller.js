@@ -28,13 +28,6 @@ const createOrder = async (req, res) => {
       return acc + item.price * item.quantity;
     }, 0);
 
-    console.log("vamos a guardar");
-    console.log({
-      user: userId,
-      items: itemsWithPrice,
-      total,
-    });
-
     const order = await Order.create({
       user: userId,
       items: itemsWithPrice,

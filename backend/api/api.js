@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import { rateLimit } from "express-rate-limit";
 import morgan from "morgan";
-import "./database.js";
+
 import adminProductRouter from "./routes/admin.product.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import cartRouter from "./routes/cart.routes.js";

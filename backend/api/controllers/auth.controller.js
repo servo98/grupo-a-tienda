@@ -8,6 +8,17 @@ const register = async (req, res) => {
   try {
     const encyptedPassword = bcrypt.hashSync(req.body.password, 10);
 
+    const existingUser = await User.findOne({
+      email: req.body.email,
+    });
+
+    if (existingUser) {
+      return res.status(400).json({
+        message: "Error registering user",
+        error: "Email already exists",
+      });
+    }
+
     const user = await User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -20,19 +31,14 @@ const register = async (req, res) => {
       items: [],
     });
 
+    user.password = undefined;
+
     return res.json({ message: "User registered", user });
   } catch (error) {
-    if (error.code === 11000) {
-      return res.status(400).json({
-        message: "Error registering user",
-        error: "Email already exists",
-      });
-    } else {
-      res.status(500).json({
-        message: "Error registering user",
-        error: error.message,
-      });
-    }
+    res.status(500).json({
+      message: "Error registering user",
+      error: error.message,
+    });
   }
 };
 
