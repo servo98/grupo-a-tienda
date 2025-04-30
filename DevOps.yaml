@@ -1,0 +1,44 @@
+- Terminar el proyecto
+  - Historial de compras ✅
+  - Validar el body
+  - Test de backend (jest)
+  - Test de frontend (cypress)
+  - (caché redis, chat en tiempo real con socket.io, framework de diseño material ui)
+  - mejoras de ux (skelletons, loaders, alertas)
+  - paginado (query params)
+
+- Calida de código
+  - ESLint automático
+  - Testing automático
+
+- Shell
+  - comandos básicos
+  - procesos
+  - scripts de npm
+  - variables de entorno
+  - redirección de salida
+  - pipes
+
+- Deployar
+  - Ambientes
+  - Producción
+  - Staging
+
+- CI/CD
+  - pipes
+  - jobs
+  - actions
+
+- PR
+  - Pull request
+  - Merge request
+  - Revisión de código
+
+- docker
+  - comandos
+  - docker desktop
+  - images
+  - contendores
+  - network
+  - volumes
+  - docker-compose

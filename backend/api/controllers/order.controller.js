@@ -1,7 +1,24 @@
 import Order from "../models/Order.js";
 import Cart from "../models/Cart.js";
 
-const getOrders = () => {};
+const getOrders = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const orders = await Order.find({
+      user: userId,
+    }).populate("items.product");
+
+    return res.json({
+      orders,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: "Error al obtener el historial de compras",
+    });
+  }
+};
+
 const createOrder = async (req, res) => {
   try {
     const userId = req.userId;
