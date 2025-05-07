@@ -22,13 +22,25 @@ api.use(
 
 api.use(cors());
 
-morgan.token("body", (req) => {
-  return JSON.stringify(req.body);
-});
-
-// api.use(morgan(":body"));
-
 api.use(express.json());
+
+switch (process.env.NODE_ENV) {
+  case "development":
+    morgan.token("body", (req) => {
+      return JSON.stringify(req.body);
+    });
+    api.use(
+      morgan(
+        ":body :method :url :status :res[content-length] - :response-time ms"
+      )
+    );
+    break;
+  case "production":
+    api.use(morgan("short"));
+
+  default:
+    break;
+}
 
 api.get("/", (req, res) => {
   res.json({
