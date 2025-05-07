@@ -23,7 +23,11 @@ const Home = () => {
   return (
     <>
       <h1>Home</h1>
-      <ProductList products={products} />
+      {products.length === 0 ? (
+        <h3>No hay productos en la base de datos</h3>
+      ) : (
+        <ProductList products={products} />
+      )}
     </>
   );
 };

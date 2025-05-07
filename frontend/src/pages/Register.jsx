@@ -55,6 +55,7 @@ const Register = () => {
           <input
             type="text"
             id="firstName"
+            data-test="firstName"
             name="firstName"
             onChange={handleChange}
             value={formData.firstName}
@@ -66,6 +67,7 @@ const Register = () => {
           <input
             type="text"
             id="lastName"
+            data-test="lastName"
             name="lastName"
             onChange={handleChange}
             value={formData.lastName}
@@ -77,6 +79,7 @@ const Register = () => {
           <input
             type="email"
             id="email"
+            data-test="email"
             name="email"
             onChange={handleChange}
             value={formData.email}
@@ -88,13 +91,19 @@ const Register = () => {
           <input
             type="password"
             id="password"
+            data-test="password"
             name="password"
             onChange={handleChange}
             value={formData.password}
             placeholder="Ingresa contraseña"
           />
         </div>
-        <button onClick={handleSubmit} type="submit" disabled={isLoading}>
+        <button
+          data-test="registerSubmit"
+          onClick={handleSubmit}
+          type="submit"
+          disabled={isLoading}
+        >
           Register
         </button>
       </form>

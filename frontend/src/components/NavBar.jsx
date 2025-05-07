@@ -32,10 +32,14 @@ const NavBar = () => {
       ) : (
         <ul>
           <li>
-            <Link to="/register">Registrarse</Link>
+            <Link to="/register" data-test="registerLink">
+              Registrarse
+            </Link>
           </li>
           <li>
-            <Link to="/login">Iniciar sesión</Link>
+            <Link to="/login" data-test="loginLink">
+              Iniciar sesión
+            </Link>
           </li>
         </ul>
       )}
