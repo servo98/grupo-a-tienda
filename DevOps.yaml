@@ -7,32 +7,32 @@
   - mejoras de ux (skeletons, loaders, alertas) *
   - paginado (query params) *
 
-- Calida de código
-  - ESLint automático
-  - Testing automático
+- PR
+  - Pull request ✅ github
+  - Merge request ✅ gitlab
+  - Revisión de código
 
 - Shell
-  - comandos básicos
+  - comandos básicos ✅
   - procesos
   - scripts de npm
   - variables de entorno
   - redirección de salida
   - pipes
 
-- Deployar
-  - Ambientes
-  - Producción
-  - Staging
+- Calidad de código
+  - ESLint automático
+  - Testing automático
 
 - CI/CD
   - pipes
   - jobs
   - actions
 
-- PR
-  - Pull request
-  - Merge request
-  - Revisión de código
+- Deployar
+  - Ambientes
+  - Producción
+  - Staging
 
 - docker
   - comandos
@@ -42,3 +42,18 @@
   - network
   - volumes
   - docker-compose
+
+- comandos
+  - cd
+  - ls
+  - mkdir
+  - rm
+  - touch
+  - cat
+  - echo
+
+  - cp
+  - mv
+
+  - grep
+  - find
