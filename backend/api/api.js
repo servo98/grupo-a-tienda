@@ -44,7 +44,7 @@ switch (process.env.NODE_ENV) {
 
 api.get("/", (req, res) => {
   res.json({
-    message: "API Live!",
+    message: "API Live! v2",
   });
 });
 
