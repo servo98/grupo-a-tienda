@@ -43,9 +43,9 @@ switch (process.env.NODE_ENV) {
     break;
 }
 
-api.get("/", (req, res) => {
+api.get("/", (_req, res) => {
   res.json({
-    message: "API Live! v2",
+    message: "API Live! v4",
   });
 });
 
