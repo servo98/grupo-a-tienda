@@ -20,7 +20,7 @@ const storage = new CloudinaryStorage({
   params: {
     folder: "productPhotos",
     formate: () => "png",
-    public_id: (req, file) => getFileName(),
+    public_id: () => getFileName(),
   },
 });
 

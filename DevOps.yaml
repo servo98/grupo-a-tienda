@@ -2,10 +2,10 @@
   - Historial de compras ✅
   - Validar el body 🟨
   - Test de backend (jest) 🟨
-  - Test de frontend (cypress)
-  - (caché redis, chat en tiempo real con socket.io, framework de diseño material ui)
-  - mejoras de ux (skeletons, loaders, alertas)
-  - paginado (query params)
+  - Test de frontend (cypress) 🟨
+  - (caché redis, chat en tiempo real con socket.io, framework de diseño material ui) *
+  - mejoras de ux (skeletons, loaders, alertas) *
+  - paginado (query params) *
 
 - Calida de código
   - ESLint automático

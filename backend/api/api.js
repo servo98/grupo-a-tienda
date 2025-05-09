@@ -37,6 +37,7 @@ switch (process.env.NODE_ENV) {
     break;
   case "production":
     api.use(morgan("short"));
+    break;
 
   default:
     break;

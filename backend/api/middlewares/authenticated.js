@@ -25,6 +25,7 @@ const authenticated = (req, res, next) => {
 
     next();
   } catch (error) {
+    console.error("Error al autenticar el token:", error);
     return res.status(401).json({
       message: "Invalid token",
     });

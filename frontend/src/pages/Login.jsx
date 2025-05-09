@@ -49,6 +49,7 @@ const Login = () => {
                 type="text"
                 name="email"
                 id="email"
+                data-test="email"
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -59,11 +60,17 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
+                data-test="password"
                 value={formData.password}
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" disabled={isLoading} onClick={handleSubmit}>
+            <button
+              type="submit"
+              disabled={isLoading}
+              data-test="loginSubmit"
+              onClick={handleSubmit}
+            >
               Login
             </button>
           </form>

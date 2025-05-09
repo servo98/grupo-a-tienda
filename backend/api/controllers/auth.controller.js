@@ -77,6 +77,7 @@ const login = async (req, res) => {
     res.json({
       token,
     });
+    // eslint-disable-next-line no-unused-vars
   } catch (error) {
     res.status(500).json({
       message: "Error al hacer login",
