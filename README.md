@@ -29,3 +29,35 @@
 | `/orders`                  | Historial de órdenes del usuario          | Sí                     |
 | `/admin/products`          | Gestión de productos (admin)              | Sí                     |
 | `/admin/products/:id/edit` | Edición de un producto (admin)            | Sí                     |
+
+<!-- Crear Image de frontend -->
+
+docker build -t front-img:latest ./frontend
+
+<!-- Crear Image de backend -->
+
+docker build -t back-img:latest ./backend
+
+<!-- Descargar Image de mongo -->
+
+docker pull mongo:latest
+
+<!-- Crear contenedor de frontend -->
+
+docker run -d --name front-expuesto -p 5173:5173 front-img:latest
+
+<!-- Crear network tienda-net -->
+
+docker network create tienda-net
+
+<!-- Crear volume tienda-volume -->
+
+docker volume create tienda-volume
+
+<!-- Crear contenedor de base de datos -->
+
+docker run -d --name tienda-db --network tienda-net -v tienda-volume:/data/db mongo:latest
+
+<!-- Crear contenedor de backend-->
+
+docker run -d --name back-expuesto --network tienda-net -p 8080:8080 -e MONGO_URI="mongodb://tienda-db:27017/tiendaDBLocal" back-img:latest
