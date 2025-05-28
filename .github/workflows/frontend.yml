@@ -1,0 +1,22 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-20-04
+    defaults:
+      run:
+        working-directory: frontend    
+    steps:
+      - name: Configurando Git
+        uses: actions/checkout@v4.2.2
+      - name: Configurando NodeJS
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: "20.18.1"
+      - name: Instalando dependencias
+        run: yarn
+      - name: Ejecutar ESLint
+        run: yarn lint   
