@@ -61,3 +61,7 @@ docker run -d --name tienda-db --network tienda-net -v tienda-volume:/data/db mo
 <!-- Crear contenedor de backend-->
 
 docker run -d --name back-expuesto --network tienda-net -p 8080:8080 -e MONGO_URI="mongodb://tienda-db:27017/tiendaDBLocal" back-img:latest
+
+<!-- Si ya tienes docker-compose -->
+
+docker-compose up -d

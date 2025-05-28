@@ -1,0 +1,42 @@
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: tienda-db
+    networks:
+      - tienda-net
+    volumes:
+      - tienda-data:/data/db
+
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: back-expuesto
+    networks:
+      - tienda-net
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGO_URI=mongodb://tienda-db:27017/tiendaDBLocal
+    depends_on:
+      - mongo
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: front-expuesto
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+
+networks:
+  tienda-net:
+
+volumes:
+  tienda-data:
+
