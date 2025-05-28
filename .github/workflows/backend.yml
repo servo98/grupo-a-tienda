@@ -22,3 +22,22 @@ jobs:
         run: yarn
       - name: Ejecutar ESLint
         run: yarn lint
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Configurando Git
+        uses: actions/checkout@v4.2.2
+      - name: Configurando NodeJS
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: "20.18.1"
+      - name: Instalando dependencias
+        run: yarn
+      - name: Ejecutar pruebas unitarias
+        run: yarn test

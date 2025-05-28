@@ -1,8 +1,9 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 
+let mongoServer;
 const connectDB = async () => {
-  const mongoServer = await MongoMemoryServer.create({
+  mongoServer = await MongoMemoryServer.create({
     instance: {
       dbName: "testDB",
       port: 27017,
@@ -17,6 +18,7 @@ const connectDB = async () => {
 
 const disconnectDB = async () => {
   await mongoose.connection.close();
+  await mongoServer.stop();
 };
 
 const dropDatabase = async () => {
