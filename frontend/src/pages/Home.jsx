@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Home</h1>
+      <h1>Tienda en linea</h1>
       {products.length === 0 ? (
         <h3>No hay productos en la base de datos</h3>
       ) : (
