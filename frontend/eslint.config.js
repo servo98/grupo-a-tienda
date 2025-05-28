@@ -2,7 +2,7 @@ import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import cypressPlugin from "eslint-plugin-cypress";
+import pluginCypress from "eslint-plugin-cypress/flat";
 
 export default [
   { ignores: ["dist"] },
@@ -31,5 +31,5 @@ export default [
       ],
     },
   },
-  cypressPlugin.configs.recommended,
+  pluginCypress.configs.globals,
 ];
