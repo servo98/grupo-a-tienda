@@ -3,14 +3,14 @@ on:
     branches:
       - main
     paths:
-      - "frontend/**"
+      - "backend/**"
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: frontend
+        working-directory: backend
     steps:
       - name: Configurando Git
         uses: actions/checkout@v4.2.2
