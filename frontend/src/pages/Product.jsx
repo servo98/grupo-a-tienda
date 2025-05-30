@@ -1,8 +1,12 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getProductDetail } from "../services/product.service";
+import Chat from "../components/chat/Chat";
+
+import useAuth from "../hooks/useAuth";
 
 const Product = () => {
+  const { isAuth } = useAuth();
   const [product, setproduct] = useState(null);
 
   const { productId } = useParams();
@@ -35,6 +39,8 @@ const Product = () => {
             ))}
           </div>
           <p>Producto publicado por: {`${product.createdBy.fullName}`}</p>
+
+          {isAuth && <Chat />}
         </div>
       ) : (
         <p>Loading...</p>
